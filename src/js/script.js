@@ -62,7 +62,7 @@ function onSearchForm(e) {
 
   if (query === '') {
     Notiflix.Notify.failure(
-      'The search string cannot be empty. Please specify your search query.',
+      'The search string cannot be empty. Please specify your search query.'
     );
     return;
   }
@@ -71,7 +71,7 @@ function onSearchForm(e) {
     .then(data => {
       if (data.totalHits === 0) {
         Notiflix.Notify.failure(
-          'Sorry, there are no images matching your search query. Please try again.',
+          'Sorry, there are no images matching your search query. Please try again.'
         );
       } else {
         renderGallery(data.hits);
@@ -98,7 +98,7 @@ function onloadMore() {
 
       if (page > totalPages) {
         Notiflix.Notify.failure(
-          "We're sorry, but you've reached the end of search results.",
+          "We're sorry, but you've reached the end of search results."
         );
       }
     })
@@ -112,16 +112,13 @@ function checkIfEndOfPage() {
   );
 }
 
-
 function showLoadMorePage() {
   if (checkIfEndOfPage()) {
     onloadMore();
   }
 }
 
-
 window.addEventListener('scroll', showLoadMorePage);
-
 
 window.addEventListener('scroll', function () {
   arrowTop.hidden = scrollY < document.documentElement.clientHeight;
