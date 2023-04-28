@@ -98,6 +98,9 @@ button {
 .info {
   padding: 10px;
   justify-content: space-around;
+  box-shadow: 0 1px 3px rgba(0,0,0,.2), 0 5px 5px rgba(0,0,0,.3);
+  background-color: rgba(0,0,0,.3);
+
 }
 
 .info-item {
@@ -115,3 +118,4 @@ button {
 a {
   text-decoration: none;
 }/*# sourceMappingURL=index.css.map */
+
