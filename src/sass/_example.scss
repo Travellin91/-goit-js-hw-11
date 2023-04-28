@@ -26,10 +26,12 @@
   background-size: cover;
   background-position: center;
 }
+
 body {
   background-color: #951ab4;
   background-image: url('../images/48388393_1203648056452955_3274491664994926592_o-1024x533.jpg');
   background-size: cover;
+  display: flex;
 
 }
 .container {
@@ -41,6 +43,7 @@ body {
 }
 .body {
   text-align: center;
+ 
 }
 input {
   width: 400px;
