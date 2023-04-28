@@ -2,6 +2,7 @@ import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { fetchImages } from './fetchImages';
+//import { Fluend_scroll } from './fluend_scroll'
 
 const searchForm = document.getElementById('search-form');
 const gallery = document.querySelector('.gallery');
@@ -14,7 +15,8 @@ let simpleLightBox;
 
 searchForm.addEventListener('submit', onSearchForm);
 gallery.addEventListener('click', onGalleryClick);
-window.addEventListener('scroll', throttle(showLoadMorePage, 500));
+
+//window.addEventListener('scroll', throttle(showLoadMorePage, 500));
 
 function renderGallery(images) {
   const markup = images

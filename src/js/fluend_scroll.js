@@ -1,18 +1,18 @@
-Fluend_scroll({
-  animationTime: 800,
+//Fluend_scroll({
+  //animationTime: 800,
 
-  stepSize: 75,
+  //stepSize: 75,
 
-  acceleretionDelta: 30,
+ // acceleretionDelta: 30,
 
-  accelerationMax: 2,
+ // accelerationMax: 2,
 
-  keyboardSupport: true,
+ //keyboardSupport: true,
 
-  arrowScroll: 50,
+ // arrowScroll: 50,
 
-  pulseAlgorithm: true,
-  pulseScale: 4,
-  pulseNormalize: 1,
-  touchpadSupport: true,
-});
+  //pulseAlgorithm: true,
+  //pulseScale: 4,
+  //pulseNormalize: 1,
+  //touchpadSupport: true,
+//});
