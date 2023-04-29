@@ -2,7 +2,6 @@ import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { fetchImages } from './fetchImages';
-//import { Fluend_scroll } from './fluend_scroll'
 
 const searchForm = document.getElementById('search-form');
 const gallery = document.querySelector('.gallery');
@@ -15,8 +14,6 @@ let simpleLightBox;
 
 searchForm.addEventListener('submit', onSearchForm);
 gallery.addEventListener('click', onGalleryClick);
-
-//window.addEventListener('scroll', throttle(showLoadMorePage, 500));
 
 function renderGallery(images) {
   const markup = images
@@ -72,6 +69,7 @@ function onSearchForm(e) {
         renderGallery(hits);
         simpleLightBox = new SimpleLightbox('.gallery a').refresh();
         Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
+        observeLoadMore();
       }
     })
     .catch(error => console.log(error))
@@ -87,7 +85,29 @@ function onGalleryClick(e) {
   }
 }
 
+function observeLoadMore() {
+  const target = document.querySelector('.observe-load-more');
+  if (!target) {
+    return;
+  }
+  const observer = new IntersectionObserver(
+    entries => {
+      if (entries[0].isIntersecting && query !== '') {
+        onLoadMore();
+      }
+    },
+    {
+      rootMargin: '0px 0px 0px 0px',
+      threshold: 0.1,
+    }
+  );
+  observer.observe(target);
+}
+
 function showLoadMorePage() {
+  if (!arrowTop) {
+    return;
+  }
   arrowTop.hidden = scrollY < document.documentElement.clientHeight;
   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
   if (scrollTop + clientHeight >= scrollHeight - 5 && query !== '') {
@@ -97,5 +117,26 @@ function showLoadMorePage() {
 
 function onLoadMore() {
   page += 1;
-  simpleLightBox.destroy();
+  fetchImages(query, page, perPage)
+    .then(({ totalHits, hits }) => {
+      renderGallery(hits);
+      simpleLightBox.refresh();
+      Notiflix.Notify.success(`Loaded ${hits.length} additional images.`);
+    })
+    .catch(error => console.log(error));
 }
+
+function throttle(func, delay) {
+  let timeoutId;
+  return function(...args) {
+    if (timeoutId) {
+      return;
+    }
+    timeoutId = setTimeout(() => {
+      func(...args);
+      timeoutId = null;
+    }, delay);
+  };
+}
+
+window.addEventListener('scroll', throttle(showLoadMorePage, 1000));
