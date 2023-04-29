@@ -7,11 +7,21 @@ const searchForm = document.getElementById('search-form');
 const gallery = document.querySelector('.gallery');
 const arrowTop = document.querySelector('.arrow-top');
 const perPage = 40;
+const scrollButton = document.getElementById('scroll-to-top');
+
+
+scrollButton.addEventListener("click", function() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
 
 let query = '';
 let page = 1;
 let simpleLightBox;
 
+scrollButton.style.display = 'none';
 searchForm.addEventListener('submit', onSearchForm);
 gallery.addEventListener('click', onGalleryClick);
 
@@ -140,3 +150,15 @@ function throttle(func, delay) {
 }
 
 window.addEventListener('scroll', throttle(showLoadMorePage, 1000));
+
+window.addEventListener("scroll", function() {
+  if (window.pageYOffset > 100) {
+    scrollButton.style.display = "block";
+    scrollButton.style.right = "20px"; // додаємо блоку властивість right
+  } else {
+    scrollButton.style.display = "none";
+    scrollButton.style.right = "0"; // знімаємо властивість right
+  }
+});
+
+

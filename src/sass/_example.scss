@@ -164,3 +164,17 @@ a {
   width: 100%;
   height: 1px;
 }
+
+
+
+element.style {
+  display: flex;
+}
+
+.toTop{
+  display: flex;
+  padding: 10px 30px;
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 10px;
+}
