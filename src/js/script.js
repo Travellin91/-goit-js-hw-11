@@ -3,7 +3,6 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { fetchImages } from './fetchImages';
 
-
 const searchForm = document.getElementById('search-form');
 const gallery = document.querySelector('.gallery');
 const arrowTop = document.querySelector('.arrow-top');
@@ -129,7 +128,7 @@ function onLoadMore() {
 
 function throttle(func, delay) {
   let timeoutId;
-  return function(...args) {
+  return function (...args) {
     if (timeoutId) {
       return;
     }

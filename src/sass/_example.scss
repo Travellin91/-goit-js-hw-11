@@ -32,18 +32,15 @@ body {
   background-image: url('../images/48388393_1203648056452955_3274491664994926592_o-1024x533.jpg');
   background-size: cover;
   display: flex;
-
 }
 .container {
   width: 1080px;
   margin: 0 auto;
   margin-top: 10px;
   padding: 0px 15px;
-  
 }
 .body {
   text-align: center;
- 
 }
 input {
   width: 400px;
@@ -54,11 +51,11 @@ input {
 }
 
 input:hover {
-  background: #d0dbd5
+  background: #d0dbd5;
 }
 
 input:focus {
-  background: #d0dbd5
+  background: #d0dbd5;
 }
 
 button {
@@ -72,11 +69,11 @@ button {
 }
 
 button:hover {
-  background: #3071A9
+  background: #3071a9;
 }
 
 button:focus {
-  background: #3071A9
+  background: #3071a9;
 }
 
 .gallery,
@@ -88,7 +85,7 @@ button:focus {
 .gallery {
   margin-left: -20px;
   padding-top: 30px;
-  justify-content: center;  
+  justify-content: center;
 }
 
 .gallery__link {
@@ -110,14 +107,13 @@ button:focus {
 .gallery-item {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;  
+  justify-content: space-evenly;
 }
 
 .gallery-item__img {
   display: block;
   height: 30vh;
-  object-fit: cover;  
-  
+  object-fit: cover;
 }
 
 .info {
@@ -126,10 +122,8 @@ button:focus {
   color: #444;
   gap: 5px;
   display: flex;
-  box-shadow: 0 1px 3px rgba(0,0,0,.2), 0 5px 5px rgba(0,0,0,.3);
-  background-color: rgba(0,0,0,.3);
-
-  
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 5px 5px rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .info-item {
@@ -156,7 +150,6 @@ a {
   justify-content: center;
   opacity: 0.5;
   padding: 10px;
-
 }
 
 .gallery__footer {
