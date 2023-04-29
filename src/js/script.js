@@ -153,9 +153,11 @@ window.addEventListener('scroll', throttle(showLoadMorePage, 1000));
 window.addEventListener('scroll', function () {
   if (window.pageYOffset > 100) {
     scrollButton.style.display = 'block';
-    scrollButton.style.right = '20px'; 
+    scrollButton.style.right = '20px';
+    scrollButton.style.position = 'fixed';
   } else {
     scrollButton.style.display = 'none';
     scrollButton.style.right = '0';
+    scrollButton.style.position = 'fixed';
   }
 });
