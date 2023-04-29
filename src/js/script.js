@@ -9,11 +9,10 @@ const arrowTop = document.querySelector('.arrow-top');
 const perPage = 40;
 const scrollButton = document.getElementById('scroll-to-top');
 
-
-scrollButton.addEventListener("click", function() {
+scrollButton.addEventListener('click', function () {
   window.scrollTo({
     top: 0,
-    behavior: "smooth"
+    behavior: 'smooth',
   });
 });
 
@@ -151,14 +150,12 @@ function throttle(func, delay) {
 
 window.addEventListener('scroll', throttle(showLoadMorePage, 1000));
 
-window.addEventListener("scroll", function() {
+window.addEventListener('scroll', function () {
   if (window.pageYOffset > 100) {
-    scrollButton.style.display = "block";
-    scrollButton.style.right = "20px"; // додаємо блоку властивість right
+    scrollButton.style.display = 'block';
+    scrollButton.style.right = '20px'; 
   } else {
-    scrollButton.style.display = "none";
-    scrollButton.style.right = "0"; // знімаємо властивість right
+    scrollButton.style.display = 'none';
+    scrollButton.style.right = '0';
   }
 });
-
-
