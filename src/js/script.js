@@ -164,7 +164,8 @@ window.addEventListener('scroll', function () {
 });
 
 window.addEventListener('scroll', () => {
-  const currentPosition = window.pageYOffset || document.documentElement.scrollTop;
+  const currentPosition =
+    window.pageYOffset || document.documentElement.scrollTop;
   if (currentPosition > SCROLL_OFFSET) {
     anime({
       targets: scrollButton,
