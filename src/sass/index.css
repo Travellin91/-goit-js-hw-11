@@ -148,7 +148,6 @@ element.style {
   display: flex;
   padding: 10px 30px;
   position: fixed;
-  opacity: 0.5;
   bottom: 0;
   margin-bottom: 10px;
 }

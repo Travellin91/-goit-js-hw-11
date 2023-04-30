@@ -8,6 +8,7 @@ const gallery = document.querySelector('.gallery');
 const arrowTop = document.querySelector('.arrow-top');
 const perPage = 40;
 const scrollButton = document.getElementById('scroll-to-top');
+const SCROLL_OFFSET = 100;
 
 scrollButton.addEventListener('click', function () {
   window.scrollTo({
@@ -159,5 +160,30 @@ window.addEventListener('scroll', function () {
     scrollButton.style.display = 'none';
     scrollButton.style.right = '0';
     scrollButton.style.position = 'fixed';
+  }
+});
+
+window.addEventListener('scroll', () => {
+  const currentPosition = window.pageYOffset || document.documentElement.scrollTop;
+  if (currentPosition > SCROLL_OFFSET) {
+    anime({
+      targets: scrollButton,
+      opacity: 1,
+      duration: 500,
+      easing: 'linear',
+      begin: () => {
+        scrollButton.style.display = 'block';
+      },
+    });
+  } else {
+    anime({
+      targets: scrollButton,
+      opacity: 0,
+      duration: 500,
+      easing: 'linear',
+      complete: () => {
+        scrollButton.style.display = 'none';
+      },
+    });
   }
 });
