@@ -8,6 +8,10 @@
     <script type="module" src="./index.js"></script>
   </head>
   <body>
+    <div class="pagination">
+      <button class="pagination__button" data-action="prev">Previous</button>
+      <button class="pagination__button" data-action="next">Next</button>
+    </div>
     <div class="gallery__footer">
       <div class="observe-load-more"></div>
     </div>
@@ -20,6 +24,7 @@
     <button class="toTop show" id="scroll-to-top" type="button">
       Scroll to Top
     </button>
+    <button type="button" class="load-more" hidden>Load more</button>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
     <include src="./partials/example.html"></include>
     <script src="./js/script.js" type="module"></script>

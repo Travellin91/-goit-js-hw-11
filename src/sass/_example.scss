@@ -177,4 +177,17 @@ element.style {
   margin-bottom: 10px;
 }
 
+.pagination {
+  align-items: center;
+  display: flex;
+  position: fixed;
+  bottom: 50px;
+  opacity: 0.8;
+  gap: 5px;
+  flex-direction: column;
+  margin: 10px;
+}
 
+.pagination__button {
+  display: flex;
+}

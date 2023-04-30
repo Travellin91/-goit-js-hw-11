@@ -9,6 +9,15 @@ const arrowTop = document.querySelector('.arrow-top');
 const perPage = 40;
 const scrollButton = document.getElementById('scroll-to-top');
 const SCROLL_OFFSET = 100;
+const pagination = document.querySelector('.pagination');
+const prevButton = pagination.querySelector('[data-action="prev"]');
+const nextButton = pagination.querySelector('[data-action="next"]');
+
+prevButton.disabled = true;
+nextButton.disabled = true;
+
+prevButton.addEventListener('click', onPrevButtonClick);
+nextButton.addEventListener('click', onNextButtonClick);
 
 scrollButton.addEventListener('click', function () {
   window.scrollTo({
@@ -148,6 +157,63 @@ function throttle(func, delay) {
     }, delay);
   };
 }
+
+function updatePaginationButtonsState(page, totalPages) {
+  prevButton.disabled = page === 1;
+  nextButton.disabled = page === totalPages;
+}
+
+function onPrevButtonClick() {
+  page -= 1;
+  updateGallery();
+}
+
+function onNextButtonClick() {
+  page += 1;
+  updateGallery();
+}
+
+function updateGallery() {
+  fetchImages(query, page, perPage)
+    .then(({ totalHits, hits, totalPages }) => {
+      if (totalHits === 0) {
+        Notiflix.Notify.failure(
+          'Sorry, there are no images matching your search query. Please try again.'
+        );
+      } else {
+        gallery.innerHTML = '';
+        renderGallery(hits);
+        updatePaginationButtonsState(page, totalPages);
+      }
+    })
+    .catch(error => console.log(error));
+}
+
+searchForm.addEventListener('submit', e => {
+  e.preventDefault();
+  page = 1;
+  query = e.currentTarget.elements.searchQuery.value.trim();
+  gallery.innerHTML = '';
+
+  if (query === '') {
+    return;
+  }
+
+  fetchImages(query, page, perPage)
+    .then(({ totalHits, hits, totalPages }) => {
+      if (totalHits === 0) {
+      } else {
+        renderGallery(hits);
+        updatePaginationButtonsState(page, totalPages);
+      }
+    })
+    .catch(error => console.log(error))
+    .then(() => {
+      searchForm.reset();
+    });
+});
+
+observeLoadMore();
 
 window.addEventListener('scroll', throttle(showLoadMorePage, 1000));
 
